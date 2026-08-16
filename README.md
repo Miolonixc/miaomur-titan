@@ -1,6 +1,6 @@
 # Мурчик для Titan OS
 
-HTML5 Canvas-порт TV-заставки из [MiaoMurApp](https://github.com/Miolonixc/MiaoMurApp).
+HTML5 Canvas-порт TV-заставки из [MiaoMurApp](https://github.com/Miolonixc/MiaoMurApp). Это самостоятельное приложение для Titan OS, а не APK и не замена системного screensaver.
 
 Запускается как hosted web app в Titan OS DevView. Откройте сайт в современном браузере для локальной проверки. Управление пультом: **OK** открывает меню, стрелки перемещают фокус, **Back** закрывает меню.
 
@@ -12,4 +12,15 @@ HTML5 Canvas-порт TV-заставки из [MiaoMurApp](https://github.com/M
 npx serve .
 ```
 
-Для Titan OS потребуется HTTPS URL, добавленный в Partner Portal → DevView.
+Для Titan OS потребуется HTTPS URL, добавленный в Partner Portal → DevView. Полная последовательность:
+
+1. Разместить содержимое этого репозитория на HTTPS-хостинге.
+2. Зарегистрировать аккаунт в [Titan OS Partner Portal](https://partners.titanos.tv/) и запросить DevView access.
+3. В Portal → DevView добавить URL приложения в Sandbox.
+4. На телевизоре открыть **Apps → DevView**, привязать его кодом с экрана и выбрать приложение.
+
+Titan OS хранит `localStorage` между запусками: выбранный ночной фон сохраняется на самом ТВ.
+
+## Граница порта
+
+Android-версия использует `DreamService`, который Titan OS не предоставляет внешним приложениям. Поэтому включение приложения как системной заставки не автоматизируется публичным API. После запуска оно работает как живая заставка и не требует постоянного управления.

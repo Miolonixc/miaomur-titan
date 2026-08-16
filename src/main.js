@@ -3,7 +3,8 @@ const canvas = document.querySelector('#scene');
 const ctx = canvas.getContext('2d');
 const hint = document.querySelector('#hint');
 const menu = document.querySelector('#menu');
-let night = false;
+const preferences = JSON.parse(localStorage.getItem('miaomur-titan-preferences') || '{}');
+let night = preferences.night || false;
 let menuOpen = false;
 let last = performance.now();
 let elapsed = 0;
@@ -56,6 +57,7 @@ function drawClock(w, h, t) { const now = new Date(); const time = now.toLocaleT
 function frame(now) { const dt = Math.min((now-last)/1000,.1); last=now; elapsed+=dt; life.advance(dt); draw(elapsed); hint.style.opacity = menuOpen || now-lastInput > 4500 ? '0' : '1'; requestAnimationFrame(frame); }
 requestAnimationFrame(frame);
 
+function savePreferences() { localStorage.setItem('miaomur-titan-preferences', JSON.stringify({ night })); }
 function toggleMenu(show) { menuOpen = show; menu.hidden = !show; if (show) menu.querySelector('button').focus(); }
 addEventListener('keydown', e => { lastInput=performance.now(); life.wake(); if (e.key === 'Escape' || e.key === 'Backspace') return toggleMenu(false); if (['Enter',' '].includes(e.key)) { if (!menuOpen) toggleMenu(true); return; } if (menuOpen && e.key.startsWith('Arrow')) { e.preventDefault(); const buttons=[...menu.querySelectorAll('button')], i=buttons.indexOf(document.activeElement); buttons[(i+(e.key==='ArrowDown'||e.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length].focus(); }});
-menu.addEventListener('click', e => { const a=e.target.dataset.action; if (!a) return; if (a==='night') night=!night; if(a==='calm') lastInput=0; toggleMenu(false); });
+menu.addEventListener('click', e => { const a=e.target.dataset.action; if (!a) return; if (a==='night') { night=!night; savePreferences(); } if(a==='calm') { life.idleAfter=0; life.start(life.pick()); } if(a==='resume') life.wake(); toggleMenu(false); });
