@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#18283b" />
+    <title>Мурчик — TV</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <main id="app" aria-label="Мурчик, живая заставка">
+      <canvas id="scene" aria-label="Живой кот"></canvas>
+      <section id="hint" aria-live="polite">
+        <h1>Мурчик</h1>
+        <p>Нажмите OK, чтобы открыть меню</p>
+      </section>
+      <nav id="menu" hidden aria-label="Меню">
+        <button data-action="resume" autofocus>Продолжить</button>
+        <button data-action="calm">Просто кот</button>
+        <button data-action="night">Ночной фон</button>
+      </nav>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

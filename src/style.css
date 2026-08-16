@@ -1,0 +1,10 @@
+:root { color-scheme: dark; font-family: system-ui, sans-serif; background: #172b42; }
+* { box-sizing: border-box; }
+html, body, #app { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+#scene { display: block; width: 100%; height: 100%; }
+#hint { position: fixed; left: 6vw; bottom: 7vh; color: #fff9f2; text-shadow: 0 2px 10px #0c1825; transition: opacity .7s; }
+#hint h1 { margin: 0; font-size: clamp(28px, 4vw, 64px); font-weight: 650; }
+#hint p { margin: .3em 0 0; font-size: clamp(16px, 1.7vw, 28px); opacity: .82; }
+#menu { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: min(46vw, 520px); padding: 2.2rem; display: grid; gap: 1rem; border-radius: 28px; background: #172231e8; box-shadow: 0 18px 80px #08101b99; }
+#menu button { border: 3px solid transparent; border-radius: 18px; padding: .8em 1.2em; color: #fffaf3; background: #304965; font: inherit; font-size: clamp(20px, 2.4vw, 38px); text-align: left; }
+#menu button:focus { outline: none; border-color: #ffe486; background: #476d91; }
