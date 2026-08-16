@@ -1,0 +1,8 @@
+services:
+  titan:
+    build: .
+    image: miaomur-titan:latest
+    container_name: miaomur-titan
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8091:80"
