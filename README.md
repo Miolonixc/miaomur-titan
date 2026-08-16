@@ -1,4 +1,4 @@
-# Мурчик для Titan OS
+# Мурчик для Titan OS 🐱
 
 HTML5 Canvas-порт TV-заставки из [MiaoMurApp](https://github.com/Miolonixc/MiaoMurApp). Это самостоятельное приложение для Titan OS, а не APK и не замена системного screensaver.
 
@@ -20,6 +20,10 @@ npx serve .
 4. На телевизоре открыть **Apps → DevView**, привязать его кодом с экрана и выбрать приложение.
 
 Titan OS хранит `localStorage` между запусками: выбранный ночной фон сохраняется на самом ТВ.
+
+## Статус и план
+
+MVP готов: Canvas, пульт, меню, ночной фон, автономные занятия и unit-тесты. Дальнейшие этапы: [roadmap](docs/roadmap.md). Устройство проекта: [архитектура](docs/architecture.md). Правила изменений: [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Граница порта
 
