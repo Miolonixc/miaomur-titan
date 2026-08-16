@@ -1,4 +1,5 @@
 import { TvIdleLife } from './tv-idle-life.js';
+import { drawMurchik } from './cat-art.js';
 const canvas = document.querySelector('#scene');
 const ctx = canvas.getContext('2d');
 const hint = document.querySelector('#hint');
@@ -31,7 +32,7 @@ function draw(t) {
   const s = Math.min(w, h) * .19;
   const bob = Math.sin(t * 2.1) * s * .018 - life.lift*s*.28;
   drawPrey(w, h, s, t);
-  drawCat(x, y + bob, s, t, life.facing, life.activity);
+  drawMurchik(ctx, { x, y: y + bob, u: s * 1.8, time: t, facing: life.facing, activity: life.activity });
   drawClock(w, h, t);
 }
 
